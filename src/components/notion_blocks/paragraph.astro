@@ -1,0 +1,13 @@
+---
+import type { NotionBlock } from "../../lib/types";
+import BlogRender from "../blog_render.astro";
+
+interface Props {
+  block: NotionBlock;
+}
+
+let { block } = Astro.props;
+---
+
+<p class="text-xl my-8" set:html={block.text} />
+{block.children_level != null ? <BlogRender blocks={block.children} /> : ""}

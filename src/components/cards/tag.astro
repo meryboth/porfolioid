@@ -1,0 +1,27 @@
+---
+interface Props {
+  className: string;
+  tagName: string;
+  tagColor: string;
+}
+
+const { className = "", tagName = "", tagColor = "" }: Props = Astro.props;
+const tagProp: { [key: string]: string } = {
+  default: "bg-tag-lgray",
+  gray: "bg-tag-gray",
+  brown: "bg-tag-brown",
+  orange: "bg-tag-orange",
+  yellow: "bg-tag-yellow",
+  green: "bg-tag-green",
+  blue: "bg-tag-blue",
+  purple: "bg-tag-purple",
+  pink: "bg-tag-pink",
+  red: "bg-tag-red",
+};
+---
+
+<div
+  class={`w-fit h-7 ${tagProp[tagColor]} rounded-md py-2 px-3 flex justify-center items-center ${className}`}
+>
+  {tagName}
+</div>
