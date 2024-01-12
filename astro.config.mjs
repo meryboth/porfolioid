@@ -1,16 +1,15 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, squooshImageService } from "astro/config";
+
+import tailwind from "@astrojs/tailwind";
+import icon from "astro-icon";
 
 // https://astro.build/config
-import tailwind from "@astrojs/tailwind";
-
-import image from "@astrojs/image";
+import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [
-    tailwind(),
-    image({
-      serviceEntryPoint: "@astrojs/image/sharp",
-    }),
-  ],
+  integrations: [icon(), tailwind(), react()],
+  image: {
+    service: squooshImageService()
+  }
 });

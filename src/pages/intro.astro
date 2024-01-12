@@ -1,0 +1,53 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<main class="h-[100vh] w-[100wv] flex flex-col justify-between p-[10vh]">
+  <div class="w-full">
+    <h1 class="text-white">
+      En la intersección entre tecnología <br />y creatividad, nuestro equipo
+      construye<br /> el futuro a través de
+      <span><b>la innovación</b></span>
+    </h1>
+  </div>
+  <div class="w-full flex flex-row items-end justify-end px-[150px]">
+    <a href="home">
+      <Icon name="arrowNext" width={150} height={150} />
+    </a>
+  </div>
+</main>
+
+<style>
+  /* main {
+    background: linear-gradient(-45deg, #291008, #bfbfbf, #414546, #7f75c2);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  } */
+
+  main {
+    background-image: url("../images/gradient-intro.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  h1 {
+    font-family: "Raleway", sans-serif;
+    font-weight: 100;
+    font-size: 10vh;
+    line-height: 10vh;
+  }
+</style>

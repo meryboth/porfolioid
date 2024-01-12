@@ -7,10 +7,50 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>notion astro</title>
+    <title>I+D Portfolio</title>
     <link href="prism-nord.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Link Swiper's CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
   </head>
   <body>
     <slot />
+    <style is:global>
+      :root {
+        --base-font-size: 16px;
+      }
+
+      html,
+      body {
+        /* height: "100%"; */
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      li,
+      p,
+      a,
+      button,
+      span {
+        font-family: "Raleway", sans-serif;
+        color: white;
+      }
+      a {
+        /* font-size: 100; */
+      }
+    </style>
   </body>
 </html>

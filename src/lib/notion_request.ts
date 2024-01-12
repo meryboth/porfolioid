@@ -167,7 +167,7 @@ export async function searchPageWithSlug(slug: string) {
     blocks = await addToContents(await getAllBlocks(res.id));
     if (
       "title" in res.properties.Title &&
-      res.cover?.type == "external" &&
+      res.cover?.type == "file" &&
       "multi_select" in res.properties.Tags &&
       "rich_text" in res.properties.Intro &&
       "formula" in res.properties.Slug &&
@@ -178,7 +178,7 @@ export async function searchPageWithSlug(slug: string) {
     ) {
       card = await {
         title: res.properties.Title.title[0].plain_text,
-        cover: res.cover.external.url,
+        cover: res.cover.file.url,
         date: new Date(res.created_time),
         tagName: res.properties.Tags.multi_select[0].name,
         tagColor: res.properties.Tags.multi_select[0].color,

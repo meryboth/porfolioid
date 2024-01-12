@@ -1,0 +1,71 @@
+---
+import { Icon } from "astro-icon/components";
+import addresses from "../../data/addresses";
+import socialMedia from "../../data/socialMedia";
+---
+
+<footer
+  class="h-[100vh] w-full flex flex-col mt-[30vh] pt-5 pb-2 justify-between px-4"
+  id="contact"
+>
+  <div>
+    <Icon name="logo" height={28} width={100} />
+  </div>
+  <div class="flex flex-col justify-between md:flex-row">
+    <div class="flex flex-col justify-between items-between">
+      {
+        addresses.map((item) => (
+          <div class="my-[2vh]">
+            <h4 class="text-white text-[4vh]">{item.country}</h4>
+            <p class="text-white text-[2vh]">{item.address}</p>
+            <h6 class="text-white text-[3vh]">{item.city}</h6>
+          </div>
+        ))
+      }
+    </div>
+    <div class="flex flex-col m-[2vh] justify-between">
+      <div class="">
+        <h6 class="text-white text-[6vh] text-right">Escribinos a</h6>
+        <p class="text-white text-right text-[3vh]">info@flockit.com.ar</p>
+      </div>
+      <div class="flex flex-col">
+        {
+          socialMedia.map((item) => (
+            <p class="text-[3vh] md:mr-3 m-[0.5vh] text-right">{item.name}</p>
+          ))
+        }
+      </div>
+    </div>
+    <!--   <div class="m-[2vh]">
+      <h3 class="text-white text-[4vh]">
+        Subscribite para enterarte las últimas novedades
+      </h3>
+      <form action="" class="mt-3">
+        <div class="w-full bg-white rounded-full h-[36px] px-3">
+          <input
+            type="text"
+            class="w-full h-full outline-none text-[0.8rem]"
+            placeholder="Ingresa tu correo"
+          />
+        </div>
+      </form>
+    </div> -->
+  </div>
+  <div class="flex flex-col md:flex-row justify-between items-end mt-3 pb-3">
+    <p class="text-s md:mb-0">©Flock IT. Todos los derechos reservados</p>
+    <p class="text-s md:mb-0">Hecho por el equipo creativo de I+D con ❤️</p>
+    <a href="#"><Icon name="arrowUp" height={60} width={60} /></a>
+  </div>
+</footer>
+
+<style>
+  h4 {
+    font-weight: 600;
+  }
+  h3 {
+    font-weight: 200;
+  }
+  p {
+    font-weight: 100;
+  }
+</style>

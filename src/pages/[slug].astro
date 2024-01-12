@@ -1,5 +1,6 @@
 ---
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 import BlogRender from "../components/blog_render.astro";
 import Htmlbody from "../components/htmlbody.astro";
 import { databaseId, notion } from "../lib/common_var";
@@ -32,7 +33,8 @@ export async function getStaticPaths() {
 }
 
 const { slug } = Astro.params;
-let result: NotionResult | undefined;
+/* let result: NotionResult | undefined; */
+let result: NotionResult;
 
 if (slug != undefined) {
   result = await searchPageWithSlug(slug);
@@ -40,55 +42,78 @@ if (slug != undefined) {
 ---
 
 <Htmlbody>
-  {
-    result != undefined && result.card != undefined && result.blocks != null ? (
-      <>
-        <div class="bg-c-sky rounded-b-3xl mb-8">
-          {result.card.cover != null ? (
-            <div class="w-full h-[264px] overflow-hidden">
-              <Image
-                src={result.card.cover}
-                alt="header image"
-                width={800}
-                height={600}
-                fit="cover"
-                format={"webp"}
-                position={"center"}
-              />
-            </div>
-          ) : (
-            ""
-          )}
-          <div class="p-8">
-            <div class="text-4xl font-bold">{result.card.title}</div>
-            <div class="text-[#777] mb-2">
-              {result.card.date.toUTCString().slice(5, 16)}
-            </div>
-            <Tag
-              className="mb-4"
-              tagName={result.card.tagName}
-              tagColor={result.card.tagColor}
-            />
-            <div>{result.card.intro}</div>
-          </div>
-        </div>
-        <article class="px-8">
-          <BlogRender blocks={result.blocks} />
-        </article>
-      </>
-    ) : (
-      ""
-    )
-  }
-  <script is:inline>
-    function toggle(ele) {
-      if (ele.lastElementChild.style.display === "none") {
-        ele.lastElementChild.style.display = "block";
-        ele.firstElementChild.style.transform = "rotate(90deg)";
-      } else {
-        ele.lastElementChild.style.display = "none";
-        ele.firstElementChild.style.transform = "rotate(0deg)";
-      }
-    }
-  </script>
+  <section class="main h-full">
+    <div class="flex flex-row justify-between items-center px-[100px]">
+      <a href="/home/">
+        <Icon name="arrowBack" width={150} height={150} />
+      </a>
+      <h1>/{result?.card?.title}</h1>
+    </div>
+    <div
+      class="w-full h-[60vh]"
+      style={{
+        backgroundImage: `url(${result?.card?.cover})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+    </div>
+    <div class="px-[10vh] 2xl:px-[20rem] pt-[50px]">
+      <h2 class="text-white">{result?.card?.intro}</h2>
+    </div>
+    <div class="px-[10vh] 2xl:px-[20rem] text-white">
+      <BlogRender blocks={result?.blocks} />
+    </div>
+    <div class="w-full h-[500px] flex flex-col justify-center items-center">
+      <h3 class="text-white">¿Tienes un desafío para nuestro equipo?</h3>
+      <div class="w-full flex flex-col justify-center items-center mt-3">
+        <button class="border w-[250px] rounded-full h-[44px]"
+          >Escribinos</button
+        >
+      </div>
+    </div>
+  </section>
 </Htmlbody>
+
+<script is:inline>
+  function toggle(ele) {
+    if (ele.lastElementChild.style.display === "none") {
+      ele.lastElementChild.style.display = "block";
+      ele.firstElementChild.style.transform = "rotate(90deg)";
+    } else {
+      ele.lastElementChild.style.display = "none";
+      ele.firstElementChild.style.transform = "rotate(0deg)";
+    }
+  }
+</script>
+
+<style>
+  .main {
+    background-image: url("../images/gradient-home.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: "100%";
+    margin: 0;
+    padding-bottom: 20;
+  }
+  h1 {
+    font-weight: 100;
+    font-size: 12vh;
+  }
+  h2 {
+    font-weight: 500;
+    font-size: 1.5rem;
+  }
+  h3 {
+    font-weight: 200;
+    font-size: 3rem;
+  }
+  button {
+    font-size: 1rem;
+  }
+  button:hover {
+    background-color: #fff;
+    color: #000;
+  }
+</style>

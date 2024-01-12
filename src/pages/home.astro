@@ -1,0 +1,107 @@
+---
+import Htmlbody from "../components/htmlbody.astro";
+import Blog from "../components/cards/blog.astro";
+import Portfolio from "../components/portfolio/Portfolio.astro";
+import Footer from "../components/footer/Footer.astro";
+import { databaseId, notion } from "../lib/common_var";
+import Header from "../components/header/Header.astro";
+import Hero from "../components/hero/Hero.astro";
+import Carrousel from "../components/carrousel/Carrousel.astro";
+
+const response = await notion.databases.query({
+  database_id: databaseId,
+  sorts: [
+    {
+      property: "Created",
+      direction: "ascending",
+    },
+  ],
+});
+const limitedResults = response.results.slice(0, 5);
+---
+
+<Htmlbody>
+  <div class="main px-[100px]">
+    <section class="h-full w-full" id="start">
+      <Header />
+      <Hero />
+    </section>
+    <Portfolio />
+    <div class="h-[100px] w-full flex flex-row justify-center items-center">
+      <div class="bg-white w-[1px] line h-full"></div>
+    </div>
+    <div>
+      {
+        limitedResults.map((page) =>
+          // Ensure that the page has properties
+          "properties" in page &&
+          // Ensure that the type exist in these properties
+          "title" in page.properties.Title &&
+          "multi_select" in page.properties.Tags &&
+          "rich_text" in page.properties.Intro &&
+          "formula" in page.properties.Slug &&
+          "string" in page.properties.Slug.formula &&
+          page.properties.Slug.formula.string != null &&
+          // Ensure that the content is not empty
+          (page.properties.Title.title.length &&
+            page.properties.Tags.multi_select.length &&
+            page.properties.Intro.rich_text.length) != 0 ? (
+            <Blog
+              title={page.properties.Title.title[0].plain_text}
+              tags={page.properties.Tags.multi_select}
+              intro={page.properties.Intro.rich_text[0].plain_text}
+              slug={page.properties.Slug.formula.string}
+              cover={page?.cover?.file?.url}
+            />
+          ) : (
+            ""
+          )
+        )
+      }
+    </div>
+    <div class="h-[100px] w-full flex flex-row justify-center items-center">
+      <div class="bg-white w-[1px] line h-full"></div>
+    </div>
+    <div class="flex flex-col justify-center items-center">
+      <a
+        href="/projects/"
+        class="border w-[250px] rounded-full h-[44px] text-white flex flex-col justify-center items-center"
+        >Ver proyectos</a
+      >
+    </div>
+    <Carrousel />
+    <Footer />
+  </div>
+</Htmlbody>
+
+<style>
+  .main {
+    background-image: url("../images/gradient-home.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  /*  .main {
+    background: linear-gradient(-45deg, #291008, #bfbfbf, #414546, #7f75c2);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+  } */
+
+  /*  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  } */
+
+  a:hover {
+    background-color: #fff;
+    color: #000;
+  }
+</style>

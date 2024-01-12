@@ -1,7 +1,7 @@
 export type Card =
   | {
       title: string;
-      cover?: string;
+      cover: string;
       date: Date;
       tagName: string;
       tagColor: string;

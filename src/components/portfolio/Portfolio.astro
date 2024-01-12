@@ -1,0 +1,41 @@
+---
+import { databaseId, notion } from "../../lib/common_var";
+
+const response = await notion.databases.query({
+  database_id: databaseId,
+  sorts: [
+    {
+      property: "Created",
+      direction: "ascending",
+    },
+  ],
+});
+---
+
+<section class="w-full flex flew-row items-center justify-center">
+  {
+    response.results.map((page) =>
+      // Ensure that the page has properties
+      "properties" in page &&
+      // Ensure that the type exist in these properties
+      "title" in page.properties.Title &&
+      "multi_select" in page.properties.Tags &&
+      "rich_text" in page.properties.Intro &&
+      "formula" in page.properties.Slug &&
+      "string" in page.properties.Slug.formula &&
+      page.properties.Slug.formula.string != null &&
+      // Ensure that the content is not empty
+      (page.properties.Title.title.length &&
+        page.properties.Tags.multi_select.length &&
+        page.properties.Intro.rich_text.length) != 0
+        ? /* <Blog
+          title={page.properties.Title.title[0].plain_text}
+          tags={page.properties.Tags.multi_select}
+          intro={page.properties.Intro.rich_text[0].plain_text}
+          slug={page.properties.Slug.formula.string}
+        /> */
+          ""
+        : ""
+    )
+  }
+</section>

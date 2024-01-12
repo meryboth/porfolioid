@@ -20,8 +20,12 @@ const tagProp: { [key: string]: string } = {
 };
 ---
 
-<div
-  class={`w-fit h-7 ${tagProp[tagColor]} rounded-md py-2 px-3 flex justify-center items-center ${className}`}
->
-  {tagName}
+<div class={`text-white ${className}`}>
+  <p>{tagName.toUpperCase()} <span class="dot">•</span></p>
 </div>
+
+<style>
+  p {
+    font-size: 16px;
+  }
+</style>

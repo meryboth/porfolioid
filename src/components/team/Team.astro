@@ -1,0 +1,21 @@
+---
+import { Image } from "astro:assets";
+import CardMati from "../../images/CardMati.png";
+import CardHiro from "../../images/CardHiro.png";
+import CardMarilyn from "../../images/CardMarilyn.png";
+import CardDenis from "../../images/CardDenis.png";
+import CardMarian from "../../images/CardMarian.png";
+---
+
+<section class="px-20 h-[100vh] flex flex-col justify-center">
+  <h3 class="text-white text-[34px] text-center py-10">Nuestro equipo</h3>
+  <div class="flex flew-row w-[full] px-20 items-center justify-between">
+    <Image src={CardMati} alt="Matias Araujo" />
+    <Image src={CardHiro} alt="Eduardo Suyama" />
+    <Image src={CardMarilyn} alt="Marilyn Botheatoz" />
+    <Image src={CardDenis} alt="Denis Perafan" />
+    <Image src={CardMarian} alt="Mariano Ortega" />
+  </div>
+</section>
+
+<!-- JS -->

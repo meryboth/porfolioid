@@ -1,0 +1,52 @@
+---
+import CardMati from "../../images/CardMati.png";
+import CardHiro from "../../images/CardHiro.png";
+import CardMarilyn from "../../images/CardMarilyn.png";
+import CardDenis from "../../images/CardDenis.png";
+import CardMarian from "../../images/CardMarian.png";
+import CardKaen from "../../images/CardKaen.png";
+import CardFran from "../../images/CardFran.png";
+import CardIan from "../../images/CardIan.png";
+import { Image } from "astro:assets";
+---
+
+<section class="px-[50px] h-[100vh] py-[100px]" id="team">
+  <div class="">
+    <h3 class="text-white text-[34px] text-center py-10">Nuestro equipo</h3>
+  </div>
+  <div>
+    <swiper-container
+      class="mySwiper"
+      pagination="true"
+      pagination-clickable="true"
+      space-between="30"
+      slides-per-view="4"
+      style={{
+        "--swiper-pagination-color": "#FFF",
+        "--swiper-pagination-bullet-inactive-color": "#999999",
+        "--swiper-pagination-bullet-inactive-opacity": "1",
+        "--swiper-pagination-bullet-size": "4px",
+        "--swiper-pagination-bullet-horizontal-gap": "6px",
+        "--swiper-pagination-bottom": "auto",
+      }}
+    >
+      <swiper-slide><Image src={CardMati} alt="Matias Araujo" /></swiper-slide>
+      <swiper-slide><Image src={CardHiro} alt="Eduardo Suyama" /></swiper-slide>
+      <swiper-slide
+        ><Image src={CardMarilyn} alt="Marilyn Botheatoz" /></swiper-slide
+      >
+      <swiper-slide><Image src={CardDenis} alt="Denis Perafan" /></swiper-slide>
+      <swiper-slide
+        ><Image src={CardMarian} alt="Mariano Ortega" /></swiper-slide
+      >
+      <swiper-slide><Image src={CardKaen} alt="Martin Kaen" /></swiper-slide>
+      <swiper-slide><Image src={CardFran} alt="Francisco Sempé" /></swiper-slide
+      >
+      <swiper-slide><Image src={CardIan} alt="Ian Solari" /></swiper-slide>
+    </swiper-container>
+  </div>
+</section>
+
+<script
+  src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"
+></script>

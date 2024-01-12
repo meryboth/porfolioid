@@ -11,14 +11,20 @@
     "lint": "eslint --ext .js,.ts,.astro src"
   },
   "dependencies": {
-    "@astrojs/image": "^0.16.6",
-    "@astrojs/prism": "^2.1.1",
-    "@astrojs/tailwind": "^3.0.1",
+    "@astrojs/prism": "^3.0.0",
+    "@astrojs/react": "^3.0.9",
+    "@astrojs/tailwind": "^5.1.0",
     "@fontsource/poppins": "^4.5.10",
     "@notionhq/client": "^2.2.3",
-    "astro": "^2.3.0",
+    "@types/react": "^18.2.47",
+    "@types/react-dom": "^18.2.18",
+    "astro": "^4.0.9",
+    "astro-icon": "^1.0.2",
     "katex": "^0.16.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "sharp": "^0.31.3",
+    "swiper": "^11.0.5",
     "tailwindcss": "^3.2.7"
   },
   "devDependencies": {

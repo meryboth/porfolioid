@@ -1,0 +1,63 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<header class="w-full flex flex-col justify-between pt-[30px]">
+  <nav class="flex flex-row items-center justify-between px-[100px]">
+    <div>
+      <Icon name="logo" height={36} width={140} />
+    </div>
+    <ul class="flex flew-row w-[500px] flex-row justify-between">
+      <li>
+        <a href="#projects" class="text-[20px]">Proyectos</a>
+      </li>
+      <li>
+        <a href="#team" class="text-[20px]">Equipo</a>
+      </li>
+      <li>
+        <a href="#contact" class="text-[20px]">Contacto</a>
+      </li>
+    </ul>
+    <div>
+      <h4 class="text-white">I+D</h4>
+    </div>
+  </nav>
+  <!-- <div class="line w-full bg-white h-[0.5px]"></div> -->
+</header>
+
+<style>
+  a {
+    font-weight: 100;
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+  }
+
+  a::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+  }
+
+  .line {
+    transform: scaleY(0.6);
+  }
+
+  a:hover {
+    color: #ffffff; /* Cambia el color al que desees */
+  }
+
+  a:hover::after {
+    background-color: #fff; /* Cambia el color al que desees */
+  }
+
+  h4 {
+    font-size: 1.4rem;
+  }
+</style>

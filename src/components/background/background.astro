@@ -1,0 +1,24 @@
+---
+import { Gradient } from "../../js/Gradient.js";
+
+// Create your instance
+const gradient = new Gradient();
+
+// Call `initGradient` with the selector to your canvas
+gradient.initGradient("#gradient-canvas");
+---
+
+<section>
+  <canvas id="gradient-canvas" data-transition-in></canvas>
+</section>
+
+<style>
+  #gradient-canvas {
+    width: 100%;
+    height: 100%;
+    --gradient-color-1: #8c8c8c;
+    --gradient-color-2: #616161;
+    --gradient-color-3: #000000;
+    --gradient-color-4: #3d3d3d;
+  }
+</style>

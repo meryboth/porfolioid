@@ -9,5 +9,12 @@ interface Props {
 let { block } = Astro.props;
 ---
 
-<h1 class="text-4xl font-bold mt-20 mb-8" set:html={block.text} />
+<h1 set:html={block.text} class="pt-[30px] pb-0" />
 {block.children_level != null ? <BlogRender blocks={block.children} /> : ""}
+
+<style>
+  h1 {
+    font-weight: 400;
+    font-size: 3rem;
+  }
+</style>
