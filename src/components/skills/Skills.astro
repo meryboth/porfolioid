@@ -1,0 +1,85 @@
+---
+const skills = [
+  {
+    name: "React JS",
+  },
+  {
+    name: "Node JS",
+  },
+  {
+    name: "Astro",
+  },
+  {
+    name: "Next JS",
+  },
+  {
+    name: "ChatGPT",
+  },
+  {
+    name: "AWS",
+  },
+  {
+    name: "Nest JS",
+  },
+  {
+    name: "Supabase",
+  },
+  {
+    name: "Flutter",
+  },
+  {
+    name: "React Native",
+  },
+  {
+    name: "FlutterFlow",
+  },
+  {
+    name: "Figma",
+  },
+  {
+    name: "IA",
+  },
+  {
+    name: "Blockchain",
+  },
+  {
+    name: "Unity",
+  },
+  {
+    name: "Bezi",
+  },
+  {
+    name: "... and more to come",
+  },
+];
+---
+
+<section class="px-[50px]">
+  <div class="">
+    <h3 class="text-white text-[34px] text-center">Toolkit</h3>
+    <p class="text-center px-[200px] mb-[20px]">
+      Exploramos continuamente nuevas tecnologías para ofrecer soluciones
+      innovadoras. Nuestro toolkit se encuentra en constatante crecimiento,
+      reflejando nuestra dedicación a la investigación y la vanguardia
+      tecnológica.
+    </p>
+  </div>
+  <div class="w-full flex flex-wrap justify-center">
+    {
+      skills.map((item) => (
+        <div class="button w-auto h-[44px] px-16 py-3 mx-1 my-2 flex flex-row justify-center items-center">
+          <p class="text-white">{item.name}</p>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .button {
+    border: solid 2px white;
+    border-radius: 150px;
+    border-color: white;
+    border-width: 1;
+  }
+</style>

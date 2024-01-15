@@ -7,6 +7,8 @@ import { databaseId, notion } from "../lib/common_var";
 import Header from "../components/header/Header.astro";
 import Hero from "../components/hero/Hero.astro";
 import Carrousel from "../components/carrousel/Carrousel.astro";
+import Services from "../components/services/Services.astro";
+import Skills from "../components/skills/Skills.astro";
 
 const response = await notion.databases.query({
   database_id: databaseId,
@@ -69,6 +71,8 @@ const limitedResults = response.results.slice(0, 5);
         >Ver proyectos</a
       >
     </div>
+    <Services />
+    <Skills />
     <Carrousel />
     <Footer />
   </div>
