@@ -20,6 +20,7 @@ const response = await notion.databases.query({
   ],
 });
 const limitedResults = response.results.slice(0, 5);
+console.log(limitedResults[0].cover.file.url);
 ---
 
 <Htmlbody>

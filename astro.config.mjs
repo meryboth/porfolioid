@@ -10,6 +10,6 @@ import react from "@astrojs/react";
 export default defineConfig({
   integrations: [icon(), tailwind(), react()],
   image: {
-    service: squooshImageService()
-  }
+    service: squooshImageService(),
+  },
 });
