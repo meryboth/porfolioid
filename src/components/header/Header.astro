@@ -4,9 +4,9 @@ import { Icon } from "astro-icon/components";
 
 <header class="w-full flex flex-col justify-between pt-[30px]">
   <nav class="flex flex-row items-center justify-between px-[100px]">
-    <div>
+    <a href="https://www.flockit.com.ar/" target="_blank">
       <Icon name="logo" height={36} width={140} />
-    </div>
+    </a>
     <ul class="flex flew-row w-[500px] flex-row justify-between">
       <li>
         <a href="#projects" class="text-[20px]">Proyectos</a>
@@ -19,7 +19,7 @@ import { Icon } from "astro-icon/components";
       </li>
     </ul>
     <div>
-      <h4 class="text-white">I+D</h4>
+      <Icon name="idLogo" height={69} width={55} />
     </div>
   </nav>
   <!-- <div class="line w-full bg-white h-[0.5px]"></div> -->
@@ -32,6 +32,8 @@ import { Icon } from "astro-icon/components";
     text-decoration: none;
     color: inherit;
     transition: color 0.3s ease;
+    all: unset;
+    cursor: pointer;
   }
 
   a::after {

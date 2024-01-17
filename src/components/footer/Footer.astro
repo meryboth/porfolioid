@@ -8,9 +8,13 @@ import socialMedia from "../../data/socialMedia";
   class="h-[100vh] w-full flex flex-col mt-[30vh] pt-5 pb-2 justify-between px-4"
   id="contact"
 >
-  <div>
-    <Icon name="logo" height={28} width={100} />
+  <div class="flex flex-row w-full justify-between items-center">
+    <a href="https://www.flockit.com.ar/" target="_blank">
+      <Icon name="logo" height={69} width={160} />
+    </a>
+    <Icon name="idLogo" height={69} width={59} />
   </div>
+
   <div class="flex flex-col justify-between md:flex-row">
     <div class="flex flex-col justify-between items-between">
       {
@@ -59,6 +63,10 @@ import socialMedia from "../../data/socialMedia";
 </footer>
 
 <style>
+  a {
+    all: unset;
+    cursor: pointer;
+  }
   h4 {
     font-weight: 600;
   }
