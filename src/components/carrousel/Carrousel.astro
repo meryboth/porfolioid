@@ -10,23 +10,21 @@ import CardIan from "../../images/CardIan.png";
 import { Image } from "astro:assets";
 ---
 
-<section class="px-[50px] h-[100vh] py-[100px]" id="team">
+<section class="h-[100vh] py-[100px] mx-[50px]" id="team">
   <div class="">
     <h3 class="text-white text-[34px] text-center py-10">Nuestro equipo</h3>
   </div>
-  <div>
+  <div class="swiper-container-wrapper load-hidden cards">
     <swiper-container
-      class="mySwiper"
+      class="swiper-container"
+      keyboard="true"
       pagination="true"
       pagination-clickable="true"
       space-between="30"
-      slides-per-view="4"
+      slides-per-view="5"
+      navigation="true"
       style={{
-        "--swiper-pagination-color": "#FFF",
-        "--swiper-pagination-bullet-inactive-color": "#999999",
-        "--swiper-pagination-bullet-inactive-opacity": "1",
-        "--swiper-pagination-bullet-size": "4px",
-        "--swiper-pagination-bullet-horizontal-gap": "6px",
+        "--swiper-navigation-color": "#FFF",
         "--swiper-pagination-bottom": "auto",
       }}
     >
@@ -47,6 +45,16 @@ import { Image } from "astro:assets";
   </div>
 </section>
 
+<style>
+  .load-hidden {
+    visibility: hidden;
+  }
+</style>
+
 <script
   src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"
 ></script>
+
+<script>
+  ScrollReveal().reveal(".cards", { duration: 3000 });
+</script>

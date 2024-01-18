@@ -79,7 +79,7 @@ const skills = [
   <div class="w-full flex flex-wrap justify-center">
     {
       skills.map((item) => (
-        <div class="button w-auto h-[44px] px-16 py-3 mx-1 my-2 flex flex-row justify-center items-center">
+        <div class="button w-auto h-[44px] px-16 py-3 mx-1 my-2 flex flex-row justify-center items-center skills">
           <p class="text-white">{item.name}</p>
         </div>
       ))
@@ -95,3 +95,7 @@ const skills = [
     border-width: 1;
   }
 </style>
+
+<script>
+  ScrollReveal().reveal(".skills", { interval: 200 });
+</script>

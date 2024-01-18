@@ -3,7 +3,7 @@
 
 <section class="h-[calc(100vh-80px)] text-white flex flex-col lg:px-[8rem]">
   <div class="flex flex-row items-center justify-center h-full">
-    <div class="w-full">
+    <div class="w-full title load-hidden">
       <div class="flex flew-row items-center">
         <div class="bg-white h-[1px] w-4"></div>
         <h6 class="mx-1">Hola! Somos I+D</h6>
@@ -13,7 +13,7 @@
         <span>las ideas cobran vida</span>
       </div>
     </div>
-    <div class="mt-10 w-full px-[15px]">
+    <div class="mt-10 w-full px-[15px] text load-hidden">
       <div class="bg-white h-[1px] w-8 mb-2"></div>
       <p class="w-full text-lg md:text-xl lg:text-2xl">
         Diseñamos experiencias utilizando la más alta innovación. Creemos en la
@@ -32,7 +32,7 @@
       >Start</a
     >
   </div>
-  <div class="h-[20px] w-full flex flex-row justify-center items-center">
+  <div class="h-[10vh] w-full flex flex-row justify-center items-center">
     <div class="bg-white w-[1px] line h-full"></div>
   </div>
 </section>
@@ -68,4 +68,12 @@
     background-color: #fff;
     color: #000;
   }
+  .load-hidden {
+    visibility: hidden;
+  }
 </style>
+
+<script>
+  ScrollReveal().reveal(".title", { delay: 300 });
+  ScrollReveal().reveal(".text", { delay: 500 });
+</script>

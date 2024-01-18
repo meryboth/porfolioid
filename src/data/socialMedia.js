@@ -1,19 +1,11 @@
 const socialMedia = [
   {
-    name: "LinkediIn",
-    url: "/",
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/company/flockitok",
   },
   {
     name: "Instagram",
-    url: "/",
-  },
-  {
-    name: "Twitter | X",
-    url: "/",
-  },
-  {
-    name: "Facebook",
-    url: "/",
+    url: "https://www.instagram.com/flockit.ok/",
   },
 ];
 

@@ -8,7 +8,9 @@ import socialMedia from "../../data/socialMedia";
   class="h-[100vh] w-full flex flex-col mt-[30vh] pt-5 pb-2 justify-between px-4"
   id="contact"
 >
-  <div class="flex flex-row w-full justify-between items-center">
+  <div
+    class="flex flex-row w-full justify-between items-center load-hidden logos"
+  >
     <a href="https://www.flockit.com.ar/" target="_blank">
       <Icon name="logo" height={69} width={160} />
     </a>
@@ -19,7 +21,7 @@ import socialMedia from "../../data/socialMedia";
     <div class="flex flex-col justify-between items-between">
       {
         addresses.map((item) => (
-          <div class="my-[2vh]">
+          <div class="my-[2vh] social">
             <h4 class="text-white text-[4vh]">{item.country}</h4>
             <p class="text-white text-[2vh]">{item.address}</p>
             <h6 class="text-white text-[3vh]">{item.city}</h6>
@@ -27,15 +29,26 @@ import socialMedia from "../../data/socialMedia";
         ))
       }
     </div>
-    <div class="flex flex-col m-[2vh] justify-between">
+    <div class="flex flex-col m-[2vh] justify-between social">
       <div class="">
         <h6 class="text-white text-[6vh] text-right">Escribinos a</h6>
-        <p class="text-white text-right text-[3vh]">info@flockit.com.ar</p>
+        <a
+          href="mailto:info@flockit.com.ar"
+          class="text-white text-right text-[3vh]"
+        >
+          <p class="red text-[3vh]">info@flockit.com.ar</p>
+        </a>
       </div>
       <div class="flex flex-col">
         {
           socialMedia.map((item) => (
-            <p class="text-[3vh] md:mr-3 m-[0.5vh] text-right">{item.name}</p>
+            <a
+              href={item.url}
+              target="_blank"
+              class=" md:mr-3 m-[0.5vh] text-right text-white social"
+            >
+              <p class="text-[3vh] red">{item.name}</p>
+            </a>
           ))
         }
       </div>
@@ -55,7 +68,9 @@ import socialMedia from "../../data/socialMedia";
       </form>
     </div> -->
   </div>
-  <div class="flex flex-col md:flex-row justify-between items-end mt-3 pb-3">
+  <div
+    class="flex flex-col md:flex-row justify-between items-end mt-3 pb-3 social"
+  >
     <p class="text-s md:mb-0">©Flock IT. Todos los derechos reservados</p>
     <p class="text-s md:mb-0">Hecho por el equipo creativo de I+D con ❤️</p>
     <a href="#"><Icon name="arrowUp" height={60} width={60} /></a>
@@ -63,9 +78,19 @@ import socialMedia from "../../data/socialMedia";
 </footer>
 
 <style>
+  .load-hidden {
+    visibility: hidden;
+  }
   a {
     all: unset;
     cursor: pointer;
+    color: white;
+    font-weight: 100;
+    text-align: right;
+  }
+
+  .red:hover {
+    font-weight: 400;
   }
   h4 {
     font-weight: 600;
@@ -77,3 +102,7 @@ import socialMedia from "../../data/socialMedia";
     font-weight: 100;
   }
 </style>
+<script>
+  ScrollReveal().reveal(".logos", { duration: 1000 });
+  ScrollReveal().reveal(".social", { interval: 500 });
+</script>

@@ -9,6 +9,7 @@ import Hero from "../components/hero/Hero.astro";
 import Carrousel from "../components/carrousel/Carrousel.astro";
 import Services from "../components/services/Services.astro";
 import Skills from "../components/skills/Skills.astro";
+import Roadmap from "../components/roadmap/Roadmap.astro";
 
 const response = await notion.databases.query({
   database_id: databaseId,
@@ -74,6 +75,7 @@ console.log(limitedResults[0].cover.file.url);
     </div>
     <Services />
     <Skills />
+    <Roadmap />
     <Carrousel />
     <Footer />
   </div>
