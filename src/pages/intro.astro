@@ -4,22 +4,58 @@ import { Icon } from "astro-icon/components";
 
 <main class="h-[100vh] w-[100wv] flex flex-col justify-between p-[10vh]">
   <div class="w-full">
-    <h1 class="text-white title load-hidden">
-      En la intersección entre tecnología <br />y creatividad, nuestro equipo
-      construye<br /> el futuro a través de
-      <span><b>la innovación</b></span>
+    <h1 class="main-text">
+      <span class="typed-text"></span><span class="cursor">&nbsp;</span>
     </h1>
   </div>
   <div class="w-full flex flex-row items-end justify-end px-[150px]">
-    <a href="home" class="button load-hidden">
+    <a href="home" class="button">
       <Icon name="arrowNext" width={150} height={150} />
     </a>
   </div>
 </main>
 
 <style>
-  .load-hidden {
-    visibility: hidden;
+  .container h1 {
+    font-size: 3rem;
+    padding: 0.5rem;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+    text-align: center;
+    overflow: hidden;
+  }
+  .typed-text {
+    font-weight: 400;
+  }
+  .container h1 span.typed-text {
+    color: #dd7732;
+  }
+  .container h1 span.cursor {
+    display: inline-block;
+    background-color: #ccc;
+    margin-left: 0.1rem;
+    width: 3px;
+    animation: blink 1s infinite;
+  }
+  .container h1 span.cursor.typing {
+    animation: none;
+  }
+  @keyframes blink {
+    0% {
+      background-color: #ccc;
+    }
+    49% {
+      background-color: #ccc;
+    }
+    50% {
+      background-color: transparent;
+    }
+    99% {
+      background-color: transparent;
+    }
+    100% {
+      background-color: #ccc;
+    }
   }
   main {
     background-image: url("../images/gradient-intro.png");
@@ -37,6 +73,81 @@ import { Icon } from "astro-icon/components";
 </style>
 
 <script>
-  ScrollReveal().reveal(".title", { delay: 500 });
-  ScrollReveal().reveal(".button", { delay: 1000 });
+  const typedTextSpan = document.querySelector(".typed-text");
+  const cursorSpan = document.querySelector(".cursor");
+  const mainText = document.querySelector(".main-text");
+
+  const mainTextArray = [
+    "En la intersección entre tecnología y creatividad, nuestro equipo construye el futuro a través de la innovación. ",
+  ];
+  const textArray = ["la ciencia.", "el arte.", "la innovación."];
+  const typingDelay = 50;
+  const erasingDelay = 30;
+  const newTextDelay = 1000;
+  let mainTextIndex = 0;
+  let mainTextContent = "";
+  let mainCharIndex = 0;
+  let textArrayIndex = 0;
+  let charIndex = 0;
+
+  function typeMainText() {
+    if (mainCharIndex < mainTextArray[mainTextIndex].length) {
+      mainTextContent += mainTextArray[mainTextIndex].charAt(mainCharIndex);
+      mainText.innerHTML =
+        '<span class="typed-text">' + mainTextContent + "</span>";
+      mainCharIndex++;
+      setTimeout(typeMainText, typingDelay);
+    } else {
+      setTimeout(() => {
+        mainTextContent = ""; // Limpiar el contenido para el próximo tipo
+        typeTextArray(); // Iniciar la animación del segundo texto
+      }, newTextDelay);
+    }
+  }
+
+  function typeTextArray() {
+    if (textArrayIndex < textArray.length) {
+      type();
+    } else {
+      // Si has llegado al final del array, puedes reiniciar o realizar alguna acción adicional
+      console.log("Animación completada");
+    }
+  }
+
+  function type() {
+    if (charIndex < textArray[textArrayIndex].length) {
+      if (!cursorSpan.classList.contains("typing"))
+        cursorSpan.classList.add("typing");
+      typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+      charIndex++;
+      setTimeout(type, typingDelay);
+    } else {
+      cursorSpan.classList.remove("typing");
+      if (textArray[textArrayIndex] !== "la innovación.") {
+        setTimeout(erase, newTextDelay);
+      }
+    }
+  }
+
+  function erase() {
+    if (charIndex > 0) {
+      if (!cursorSpan.classList.contains("typing"))
+        cursorSpan.classList.add("typing");
+      typedTextSpan.textContent = textArray[textArrayIndex].substring(
+        0,
+        charIndex - 1
+      );
+      charIndex--;
+      setTimeout(erase, erasingDelay);
+    } else {
+      cursorSpan.classList.remove("typing");
+      textArrayIndex++;
+      if (textArrayIndex >= textArray.length) textArrayIndex = 0;
+      setTimeout(type, typingDelay + 1100);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    if (mainTextArray.length) setTimeout(typeMainText, 250);
+  });
 </script>
