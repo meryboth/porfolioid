@@ -1,7 +1,184 @@
 ---
+import { Image } from "astro:assets";
+import Idea from "../../images/Idea.svg";
+import Design from "../../images/Design.svg";
+import Dev from "../../images/Dev.svg";
+import Testing from "../../images/Testing.svg";
+import Pitch from "../../images/Pitch.svg";
+import Rocket from "../../images/Rocket.svg";
+import ArrowSteap from "../../images/ArrowSteap.svg";
 ---
 
-<h1 class="headline text-white text-[100px] hidden">Roadmap</h1>
+<section class="mt-[20vh]">
+  <div class="flex flex-row justify-center items-center">
+    <div class="w-1/2">
+      <h1 class="text-white text-[8vh] text-right mr-5 pl-[30vh]">
+        En cada etapa de un proyecto
+      </h1>
+    </div>
+    <div class="w-1/2">
+      <p class="w-full ml-5 pr-[30vh]">
+        Nuestro equipo de I+D es la fuerza impulsora detrás de cada proyecto,
+        interviniendo en todas las etapas, desde la gestión de ideas hasta la
+        salida a producción y la búsqueda de capital. Con la capacidad de
+        innovar y crear soluciones de vanguardia, estamos comprometidos con el
+        éxito desde el inicio.
+      </p>
+    </div>
+  </div>
+  <div class="flex flex-row justify-center items-center mt-[15vh] steps">
+    <div class="w-1/2 flex flex-row justify-end">
+      <Image
+        src={Idea}
+        alt="Un pájaro sentado sobre un nido de huevos."
+        width={500}
+      />
+    </div>
+    <div class="flex flex-col w-1/2 ml-5">
+      <div class="w-[7vh]">
+        <h4 class="text-[12vh]">1</h4>
+        <div class="bg-white h-[2px] w-full"></div>
+      </div>
+      <h6 class="text-left text-[5vh]">Idea</h6>
+      <p class="text-left pr-[30vh] mt-12">
+        Mediante metodologías avanzadas como el Design Thinking y el
+        Brainstorming el equipo de I+D interviene en proyectos en su etapa más
+        temprana. Aquí, la sinergia da vida a ideas innovadoras y propuestas que
+        fusionan la originalidad y la viabilidad comercial.
+      </p>
+    </div>
+  </div>
+  <!-- <div class="flex flex-row justify-start items-center w-full steps">
+    <div class="w-1/2 flex flex-row justify-center">
+      <Image
+        src={ArrowSteap}
+        alt="Un pájaro sentado sobre un nido de huevos."
+        width={50}
+      />
+    </div>
+  </div> -->
+  <div class="flex flex-row justify-center items-center steps">
+    <div class="w-1/2 flex flex-row justify-end">
+      <Image
+        src={Design}
+        alt="Un pájaro sentado sobre un nido de huevos."
+        width={500}
+      />
+    </div>
+    <div class="flex flex-col w-1/2 ml-5">
+      <div class="w-[7vh]">
+        <h4 class="text-[12vh]">2</h4>
+        <div class="bg-white h-[2px] w-full"></div>
+      </div>
+      <h6 class="text-left text-[5vh]">Diseño y prototipado</h6>
+      <p class="text-left pr-[30vh] mt-12">
+        Con la realización de un benchmarking detallado y una investigación
+        exhaustiva de la industria, llegamos a la creación de un prototipo
+        funcional. Este prototipo no solo reproduce con fidelidad los flujos del
+        producto final, sino que también incorpora las mejores prácticas
+        identificadas durante el proceso de investigación.
+      </p>
+    </div>
+  </div>
+  <div class="flex flex-row justify-center items-center steps">
+    <div class="w-1/2 flex flex-row justify-end">
+      <Image
+        src={Dev}
+        alt="Un pájaro sentado sobre un nido de huevos."
+        width={500}
+      />
+    </div>
+    <div class="flex flex-col w-1/2 ml-5">
+      <div class="w-[7vh]">
+        <h4 class="text-[12vh]">3</h4>
+        <div class="bg-white h-[2px] w-full"></div>
+      </div>
+      <h6 class="text-left text-[5vh]">Desarrollo</h6>
+      <p class="text-left pr-[30vh] mt-12">
+        En la fase de Desarrollo, aplicamos buenas prácticas y definimos una
+        arquitectura que es tanto innovadora como pragmática para resolver las
+        necesidades de cada producto. Implementamos soluciones ágiles y
+        eficientes que se adaptan a cada proyecto, asegurando un desarrollo
+        exitoso y con capacidad de escalabilidad.
+      </p>
+    </div>
+  </div>
+  <div class="flex flex-row justify-center items-center steps">
+    <div class="w-1/2 flex flex-row justify-end">
+      <Image
+        src={Testing}
+        alt="Un pájaro sentado sobre un nido de huevos."
+        width={500}
+      />
+    </div>
+    <div class="flex flex-col w-1/2 ml-5">
+      <div class="w-[8vh]">
+        <h4 class="text-[12vh]">4</h4>
+        <div class="bg-white h-[2px] w-full"></div>
+      </div>
+      <h6 class="text-left text-[5vh]">Testing y Seguridad</h6>
+      <p class="text-left pr-[30vh] mt-12">
+        Llevamos a cabo pruebas rigurosas de vulnerabilidades para garantizar la
+        robustez de cada desarrollo. Implementamos prácticas de testing
+        avanzadas, asegurando productos que no solo cumplen con altos estándares
+        de calidad, sino que también priorizan la seguridad en cada detalle.
+      </p>
+    </div>
+  </div>
+  <div class="flex flex-row justify-center items-center steps">
+    <div class="w-1/2 flex flex-row justify-end">
+      <Image
+        src={Pitch}
+        alt="Un pájaro sentado sobre un nido de huevos."
+        width={500}
+      />
+    </div>
+    <div class="flex flex-col w-1/2 ml-5">
+      <div class="w-[8vh]">
+        <h4 class="text-[12vh]">5</h4>
+        <div class="bg-white h-[2px] w-full"></div>
+      </div>
+      <h6 class="text-left text-[5vh]">Pitch</h6>
+      <p class="text-left pr-[30vh] mt-12">
+        Desarrollamos estratégicamente pitches de valor comercial, destacando la
+        innovación y el potencial de nuestras soluciones. Además, nos dedicamos
+        activamente a la búsqueda de capital, estableciendo conexiones claves y
+        asegurando los recursos necesarios para llevar cada proyecto a su máximo
+        potencial.
+      </p>
+    </div>
+  </div>
+  <div class="flex flex-row justify-center items-center steps mt-[8vh]">
+    <h5 class="text-[4vh]">¿Estás listo para ver a tus ideas despegar?</h5>
+  </div>
+  <div class="flex flex-row justify-center items-center steps">
+    <Image
+      src={Rocket}
+      alt="Un pájaro sentado sobre un nido de huevos."
+      width={1000}
+    />
+  </div>
+</section>
+
+<style>
+  .load-hidden {
+    visibility: hidden;
+  }
+  h1 {
+    line-height: 8vh;
+  }
+  p {
+    font-weight: 100;
+  }
+  h6 {
+    font-weight: 100;
+  }
+  h4 {
+    line-height: 12vh;
+    font-family: "Roboto";
+  }
+</style>
+
 <script>
-  ScrollReveal().reveal(".headline", { delay: 1000 });
+  ScrollReveal().reveal(".steps", { interval: 1000 });
 </script>
