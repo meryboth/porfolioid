@@ -31,9 +31,9 @@ response.results.forEach((post) => {
       .concat(".jpg"),
   });
   // the cover image expires after 1 hour so we need to download it
-  downloadImage(post.cover.file.url, `./public/images/${imgName}`);
+  /* downloadImage(post.cover.file.url, `./public/images/${imgName}`); */
 });
-async function downloadImage(url, filepath) {
+/* async function downloadImage(url, filepath) {
   try {
     const response = await fetch(url);
     const reader = response.body.getReader();
@@ -56,7 +56,7 @@ async function downloadImage(url, filepath) {
   } catch (error) {
     console.error("Error downloading image:", error);
   }
-}
+} */
 ---
 
 <Htmlbody>

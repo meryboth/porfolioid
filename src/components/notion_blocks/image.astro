@@ -14,12 +14,12 @@ var match = url.match(regex);
 
 if (match) {
   var fileName = match[1];
-  downloadImage(block.options.url, `./public/images/${fileName}`);
+  /* downloadImage(block.options.url, `./public/images/${fileName}`); */
 } else {
   console.log("No se pudo encontrar el nombre del archivo en la URL.");
 }
 
-async function downloadImage(url, filepath) {
+/* async function downloadImage(url, filepath) {
   try {
     const response = await fetch(url);
     const reader = response.body.getReader();
@@ -42,7 +42,7 @@ async function downloadImage(url, filepath) {
   } catch (error) {
     console.error("Error downloading image:", error);
   }
-}
+} */
 
 if (block.options != null && "url" in block.options) {
   imgSrc = block.options.url;

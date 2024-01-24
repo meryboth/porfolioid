@@ -40,7 +40,6 @@ const post = [];
 
 if (slug != undefined) {
   result = await searchPageWithSlug(slug);
-  /* DESCARGO el COVER */
   const imgName = result.card.title.replace(/\s/g, "").concat(".jpg");
   post.push({
     title: result.card.title,
