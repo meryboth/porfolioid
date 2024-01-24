@@ -35,9 +35,20 @@ export async function getStaticPaths() {
 const { slug } = Astro.params;
 /* let result: NotionResult | undefined; */
 let result: NotionResult;
+/* Variable donde se van a guardar los posteos */
+const post = [];
 
 if (slug != undefined) {
   result = await searchPageWithSlug(slug);
+  /* DESCARGO el COVER */
+  const imgName = result.card.title.replace(/\s/g, "").concat(".jpg");
+  post.push({
+    title: result.card.title,
+    slug: result.card.slug,
+    intro: result.card?.intro,
+    cover: imgName,
+    /* blocks: result.blocks, */
+  });
 }
 ---
 
@@ -47,22 +58,22 @@ if (slug != undefined) {
       <a href="/home/">
         <Icon name="arrowBack" width={150} height={150} />
       </a>
-      <h1>/{result?.card?.title}</h1>
+      <h1>/{post[0].title}</h1>
     </div>
     <div
       class="w-full h-[60vh]"
       style={{
-        backgroundImage: `url(${result?.card?.cover})`,
+        backgroundImage: `url('/images/${post[0].cover}')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
     </div>
     <div class="px-[10vh] 2xl:px-[20rem] pt-[50px]">
-      <h2 class="text-white">{result?.card?.intro}</h2>
+      <h2 class="text-white">{post[0].intro}</h2>
     </div>
     <div class="px-[10vh] 2xl:px-[20rem] text-white">
-      <BlogRender blocks={result?.blocks} />
+      <BlogRender blocks={result.blocks} />
     </div>
     <div class="w-full h-[500px] flex flex-col justify-center items-center">
       <h3 class="text-white">¿Tienes un desafío para nuestro equipo?</h3>

@@ -80,33 +80,6 @@ async function downloadImage(url, filepath) {
       <Hero />
     </section>
     <Portfolio />
-
-    <!--     <div id="projects">
-      {
-        limitedResults.map((page) =>
-          "properties" in page &&
-          "title" in page.properties.Title &&
-          "multi_select" in page.properties.Tags &&
-          "rich_text" in page.properties.Intro &&
-          "formula" in page.properties.Slug &&
-          "string" in page.properties.Slug.formula &&
-          page.properties.Slug.formula.string != null &&
-          (page.properties.Title.title.length &&
-            page.properties.Tags.multi_select.length &&
-            page.properties.Intro.rich_text.length) != 0 ? (
-            <Blog
-              title={page.properties.Title.title[0].plain_text}
-              tags={page.properties.Tags.multi_select}
-              intro={page.properties.Intro.rich_text[0].plain_text}
-              slug={page.properties.Slug.formula.string}
-              cover={page?.cover?.file?.url}
-            />
-          ) : (
-            ""
-          )
-        )
-      }
-    </div> -->
     <div id="projects">
       {
         posts.map((page) => (

@@ -8,10 +8,49 @@ interface Props {
 let { block } = Astro.props;
 let imgSrc = "";
 
+var url = block.options.url;
+var regex = /\/([^\/?]+)\?/;
+var match = url.match(regex);
+
+if (match) {
+  var fileName = match[1];
+  downloadImage(block.options.url, `./public/images/${fileName}`);
+} else {
+  console.log("No se pudo encontrar el nombre del archivo en la URL.");
+}
+
+async function downloadImage(url, filepath) {
+  try {
+    const response = await fetch(url);
+    const reader = response.body.getReader();
+    const writer = fs.createWriteStream(filepath);
+
+    await new Promise((resolve, reject) => {
+      let pump = () =>
+        reader.read().then(({ done, value }) => {
+          if (done) {
+            resolve();
+            return;
+          }
+          writer.write(value);
+          pump();
+        });
+      pump();
+    });
+
+    console.log(filepath.split("/")[3] + " was downloaded successfully.");
+  } catch (error) {
+    console.error("Error downloading image:", error);
+  }
+}
+
 if (block.options != null && "url" in block.options) {
   imgSrc = block.options.url;
 }
-//TODO add img captions
 ---
 
-<img src={imgSrc} alt="image" class="rounded-[20px] mb-3 w-full" />
+<img
+  src={`/images/${fileName}`}
+  alt="image"
+  class="rounded-[20px] mb-3 w-full"
+/>

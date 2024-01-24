@@ -30,7 +30,6 @@ response.results.forEach((post) => {
       .replace(/\s/g, "")
       .concat(".jpg"),
   });
-  console.log("Estos son los posteos guardados:", posts);
   // the cover image expires after 1 hour so we need to download it
   downloadImage(post.cover.file.url, `./public/images/${imgName}`);
 });
@@ -84,42 +83,6 @@ async function downloadImage(url, filepath) {
           "--swiper-pagination-bottom": "auto",
         }}
       >
-        <!--         {
-          response.results.map((page) =>
-            // Ensure that the page has properties
-            "properties" in page &&
-            // Ensure that the type exist in these properties
-            "title" in page.properties.Title &&
-            "multi_select" in page.properties.Tags &&
-            "rich_text" in page.properties.Intro &&
-            "formula" in page.properties.Slug &&
-            "string" in page.properties.Slug.formula &&
-            page.properties.Slug.formula.string != null &&
-            // Ensure that the content is not empty
-            (page.properties.Title.title.length &&
-              page.properties.Tags.multi_select.length &&
-              page.properties.Intro.rich_text.length) != 0 ? (
-              <swiper-slide>
-                <a
-                  href={`/${page.properties.Slug.formula.string}/`}
-                  class="w-full h-[400px] rounded-3xl  flex flex-col justify-end"
-                  style={{
-                    backgroundImage: `url('${page.cover?.file.url}')`,
-                    backgroundSize: "cover",
-                  }}
-                >
-                  <div class="card w-full h-full rounded-3xl">
-                    <h4 class="text-slate-900">
-                      {page.properties.Title.title[0].plain_text}
-                    </h4>
-                  </div>
-                </a>
-              </swiper-slide>
-            ) : (
-              ""
-            )
-          )
-        } -->
         {
           posts.map((page) => (
             <swiper-slide>
