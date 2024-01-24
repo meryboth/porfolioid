@@ -12,6 +12,52 @@ const response = await notion.databases.query({
     },
   ],
 });
+/* Variable donde se van a guardar los posteos */
+const posts = [];
+/* Descarga de imágenes */
+
+response.results.forEach((post) => {
+  // cover: post.properties.Image.files[0]?.file.url,
+  const imgName = post.properties.Title.title[0].plain_text
+    .replace(/\s/g, "")
+    .concat(".jpg");
+  // save the new posts:
+  posts.push({
+    id: post.id,
+    title: post.properties.Title.title[0].plain_text,
+    slug: post.properties.Slug.formula.string,
+    cover: post.properties.Title.title[0].plain_text
+      .replace(/\s/g, "")
+      .concat(".jpg"),
+  });
+  console.log("Estos son los posteos guardados:", posts);
+  // the cover image expires after 1 hour so we need to download it
+  downloadImage(post.cover.file.url, `./public/images/${imgName}`);
+});
+async function downloadImage(url, filepath) {
+  try {
+    const response = await fetch(url);
+    const reader = response.body.getReader();
+    const writer = fs.createWriteStream(filepath);
+
+    await new Promise((resolve, reject) => {
+      let pump = () =>
+        reader.read().then(({ done, value }) => {
+          if (done) {
+            resolve();
+            return;
+          }
+          writer.write(value);
+          pump();
+        });
+      pump();
+    });
+
+    console.log(filepath.split("/")[3] + " was downloaded successfully.");
+  } catch (error) {
+    console.error("Error downloading image:", error);
+  }
+}
 ---
 
 <Htmlbody>
@@ -38,7 +84,7 @@ const response = await notion.databases.query({
           "--swiper-pagination-bottom": "auto",
         }}
       >
-        {
+        <!--         {
           response.results.map((page) =>
             // Ensure that the page has properties
             "properties" in page &&
@@ -73,6 +119,24 @@ const response = await notion.databases.query({
               ""
             )
           )
+        } -->
+        {
+          posts.map((page) => (
+            <swiper-slide>
+              <a
+                href={`/${page.slug}/`}
+                class="w-full h-[400px] rounded-3xl  flex flex-col justify-end"
+                style={{
+                  backgroundImage: `url('/images/${page.cover}')`,
+                  backgroundSize: "cover",
+                }}
+              >
+                <div class="card w-full h-full rounded-3xl">
+                  <h4 class="text-slate-900">{page.title}</h4>
+                </div>
+              </a>
+            </swiper-slide>
+          ))
         }
       </swiper-container>
     </div>
