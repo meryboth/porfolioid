@@ -21,7 +21,56 @@ const response = await notion.databases.query({
   ],
 });
 const limitedResults = response.results.slice(0, 5);
-console.log(limitedResults[0].cover.file.url);
+
+/* Variable donde se van a guardar los posteos */
+const posts = [];
+
+/* Descarga de imágenes */
+
+limitedResults.forEach((post) => {
+  // cover: post.properties.Image.files[0]?.file.url,
+  const imgName = post.properties.Title.title[0].plain_text
+    .replace(/\s/g, "")
+    .concat(".jpg");
+  // save the new posts:
+  posts.push({
+    id: post.id,
+    title: post.properties.Title.title[0].plain_text,
+    slug: post.properties.Slug.formula.string,
+    tags: post.properties.Tags.multi_select,
+    intro: post.properties.Intro.rich_text[0].plain_text,
+    cover: post.properties.Title.title[0].plain_text
+      .replace(/\s/g, "")
+      .concat(".jpg"),
+  });
+  console.log("Estos son los posteos guardados:", posts);
+  // the cover image expires after 1 hour so we need to download it
+  downloadImage(post.cover.file.url, `./public/images/${imgName}`);
+});
+async function downloadImage(url, filepath) {
+  try {
+    const response = await fetch(url);
+    const reader = response.body.getReader();
+    const writer = fs.createWriteStream(filepath);
+
+    await new Promise((resolve, reject) => {
+      let pump = () =>
+        reader.read().then(({ done, value }) => {
+          if (done) {
+            resolve();
+            return;
+          }
+          writer.write(value);
+          pump();
+        });
+      pump();
+    });
+
+    console.log(filepath.split("/")[3] + " was downloaded successfully.");
+  } catch (error) {
+    console.error("Error downloading image:", error);
+  }
+}
 ---
 
 <Htmlbody>
@@ -31,22 +80,17 @@ console.log(limitedResults[0].cover.file.url);
       <Hero />
     </section>
     <Portfolio />
-    <!-- <div class="h-[100px] w-full flex flex-row justify-center items-center">
-      <div class="bg-white w-[1px] line h-full"></div>
-    </div> -->
-    <div id="projects">
+
+    <!--     <div id="projects">
       {
         limitedResults.map((page) =>
-          // Ensure that the page has properties
           "properties" in page &&
-          // Ensure that the type exist in these properties
           "title" in page.properties.Title &&
           "multi_select" in page.properties.Tags &&
           "rich_text" in page.properties.Intro &&
           "formula" in page.properties.Slug &&
           "string" in page.properties.Slug.formula &&
           page.properties.Slug.formula.string != null &&
-          // Ensure that the content is not empty
           (page.properties.Title.title.length &&
             page.properties.Tags.multi_select.length &&
             page.properties.Intro.rich_text.length) != 0 ? (
@@ -62,10 +106,21 @@ console.log(limitedResults[0].cover.file.url);
           )
         )
       }
-    </div>
-    <!-- <div class="h-[100px] w-full flex flex-row justify-center items-center">
-      <div class="bg-white w-[1px] line h-full"></div>
     </div> -->
+    <div id="projects">
+      {
+        posts.map((page) => (
+          <Blog
+            title={page.title}
+            tags={page.tags}
+            intro={page.intro}
+            slug={page.slug}
+            cover={page?.cover}
+          />
+        ))
+      }
+    </div>
+
     <div class="flex flex-col justify-center items-center mt-[10vh]">
       <a
         href="/projects/"
@@ -88,24 +143,6 @@ console.log(limitedResults[0].cover.file.url);
     background-position: center;
     background-repeat: no-repeat;
   }
-
-  /*  .main {
-    background: linear-gradient(-45deg, #291008, #bfbfbf, #414546, #7f75c2);
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
-  } */
-
-  /*  @keyframes gradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  } */
 
   a:hover {
     background-color: #fff;
