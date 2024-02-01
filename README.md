@@ -94,7 +94,8 @@ https://example.notion.site/Page-**a106d0eb96bb4efa8145ce647339eb1c**
 
 c) Para llevar adelante la conexión con éxito es importante tener la integración con la secret key desde la plataforma de Notion. Para hacerlo es preciso ingresar a la page que queremos integrar, ir a Agregar Conexiones desde el Menu de la página y elegir Integraciones. Si la integración que creamos no aparece, podemos Administrar conexiones y elegirla desde la plataforma. 
 
-[Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/2f538ce6-ba20-4f7c-a0f9-51b29ca6ae5a/fbc6c0de-8e84-4608-9cc8-6287131190aa/Untitled.png](https://imgur.com/a/wvdCGj1)
+[Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/2f538ce6-ba20-4f7c-a0f9-51b29ca6ae5a/fbc6c0de-8e84-4608-9cc8-6287131190aa/Untitled.png]()
+![](https://imgur.com/a/wvdCGj1)
 
 ```jsx
 # integration
