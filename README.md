@@ -32,7 +32,7 @@ Se trata del portfolio de proyectos del equipo interdisplinario de investigació
 
 ### Skills
 
-react, nodejs, java, python, javascript, c++, unity, astro, nextjs, chatgpt, aws, nestjs, supabase, strapi, flutter, react native, flutterflow, figma, ia, blockchain, bezi, laravel, and many more…
+react, nodejs, java, python, javascript, c++, unity, astro, nextjs, chatgpt, aws, nestjs, supabase, strapi, flutter, react native, flutterflow, figma, ia, blockchain, bezi, laravel, swift ui and many more…
 
 ---
 
